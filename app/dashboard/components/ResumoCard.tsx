@@ -1,4 +1,3 @@
-// Componente sem interatividade: continua sendo Server Component
 type Props = { titulo: string; valor: string; cor: string; destaque?: boolean };
 
 export function ResumoCard({ titulo, valor, cor, destaque }: Props) {

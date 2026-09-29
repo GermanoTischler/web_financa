@@ -1,4 +1,4 @@
-"use client"; // Precisa de interatividade (confirmação antes de excluir)
+"use client"; 
 
 import type { Transacao } from '@/lib/types';
 import { formatarMoeda, formatarData } from '@/lib/format';

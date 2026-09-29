@@ -1,4 +1,4 @@
-"use client"; // usa hooks (useActionState / useFormStatus) para feedback ao usuário
+"use client"; 
 
 import { useActionState } from 'react';
 import { useFormStatus } from 'react-dom';

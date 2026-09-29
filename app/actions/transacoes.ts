@@ -1,4 +1,4 @@
-"use server"; // Estas funções rodam apenas no servidor
+"use server"; 
 
 import { supabase } from '@/lib/supabase';
 import { revalidatePath } from 'next/cache';
@@ -11,7 +11,7 @@ export async function criarTransacao(_estadoAnterior: FormState, formData: FormD
   const valor = parseFloat(String(formData.get('valor') ?? ''));
   const tipo = String(formData.get('tipo') ?? '');
 
-  // Validação no servidor (nunca confiar apenas no HTML do cliente)
+  // Validação no servidor 
   if (!descricao) return { erro: 'Informe uma descrição.' };
   if (!Number.isFinite(valor) || valor <= 0) return { erro: 'Informe um valor maior que zero.' };
   if (tipo !== 'receita' && tipo !== 'despesa') return { erro: 'Tipo de transação inválido.' };
@@ -21,7 +21,7 @@ export async function criarTransacao(_estadoAnterior: FormState, formData: FormD
 
   // Descarta o cache para o saldo ser recalculado
   revalidatePath('/dashboard');
-  redirect('/dashboard'); // redirect deve ficar fora de try/catch
+  redirect('/dashboard'); 
 }
 
 export async function excluirTransacao(id: string) {

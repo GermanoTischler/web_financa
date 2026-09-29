@@ -5,10 +5,8 @@ import { formatarMoeda } from '@/lib/format';
 import { CardTransacao } from './components/CardTransacao';
 import { ResumoCard } from './components/ResumoCard';
 
-// Sempre buscar dados frescos do banco
 export const dynamic = 'force-dynamic';
 
-// Server Component: busca os dados direto no banco, sem expor nada ao navegador
 async function getTransacoes(): Promise<{ dados: Transacao[]; erro: boolean }> {
   const { data, error } = await supabase
     .from('transacoes')
@@ -16,7 +14,6 @@ async function getTransacoes(): Promise<{ dados: Transacao[]; erro: boolean }> {
     .order('criado_em', { ascending: false }); // mais recentes primeiro
 
   if (error) return { dados: [], erro: true };
-  // numeric do Postgres pode chegar como string: converte para number
   return { dados: (data ?? []).map((t) => ({ ...t, valor: Number(t.valor) })), erro: false };
 }
 
